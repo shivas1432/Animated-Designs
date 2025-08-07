@@ -255,27 +255,7 @@ We welcome contributions from developers of all skill levels:
 4. 🚀 **Push** to the branch (`git push origin feature/amazing-animation`)
 5. 🎉 **Submit** a Pull Request
 
----
 
-## 📊 **Repository Statistics**
-
-<div align="center">
-
-<img src="https://github-readme-stats.vercel.app/api?username=shivas1432&show_icons=true&theme=radical" alt="GitHub Stats" />
-
-<br><br>
-
-| 📈 **Metric** | 📊 **Count** |
-|:---:|:---:|
-| **Total Animations** | 600+ |
-| **Code Files** | 1200+ |
-| **Contributors** | 50+ |
-| **GitHub Stars** | 2000+ |
-| **Monthly Downloads** | 10K+ |
-
-</div>
-
----
 
 ## 🎓 **Learning Resources**
 
