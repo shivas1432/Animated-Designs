@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: beige;
+}
+
+.loader {
+    font-size: 10px;
+    width: 12em;
+    padding: 0 4em 2em 4em;
+    color: black;
+    border-style: solid;
+    border-width: 0.4em 0.1em 4em 0.1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.loader span {
+    width: 0.2em;
+    height: 10em;
+    background-color: currentColor;
+    position: relative;
+    transform-origin: top;
+    animation: moving-up 0.75s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes moving-up {
+    0%, 50% {transform: rotate(0deg);}
+    100% {transform: rotate(calc(45deg * var(--direction)));}
+}
+
+.loader span::before {
+    content: '';
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    background-color: inherit;
+    border-radius: 50%;
+    bottom: 0;
+    left: -1.5em;
+}
+
+.loader span:first-child {--direction: 1; animation-direction: alternate;}
+.loader span:last-child {--direction: -1; animation-direction: alternate-reverse;}

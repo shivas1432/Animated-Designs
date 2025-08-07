@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden;
+}
+
+.rainbow {
+    width: 20em;
+    height: 10em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: move 4s linear infinite alternate;
+}
+
+@keyframes move {
+    50% {
+        transform: translateY(5em);
+    }
+}
+
+.rainbow div {
+    box-sizing: border-box;
+    background-color: currentColor;
+    filter: opacity(0.6);
+    position: absolute;
+    width: calc(100% - 2em * (var(--n) - 1));
+    height: calc(200% - 2em * (var(--n) - 1));
+    border-radius: 10%;
+    animation: change 2s linear infinite;
+    animation-delay: calc(0.1s * var(--n));
+}
+
+@keyframes change {
+    50%, 100% {
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1em solid;
+        border-color: transparent currentColor currentColor transparent;
+        transform: rotate(225deg);
+        filter: opacity(1);
+    }
+}
+
+.rainbow div:nth-child(1) {--n: 1; color: orangered;}
+.rainbow div:nth-child(2) {--n: 2; color: orange;}
+.rainbow div:nth-child(3) {--n: 3; color: yellow;}
+.rainbow div:nth-child(4) {--n: 4; color: mediumspringgreen;}
+.rainbow div:nth-child(5) {--n: 5; color: deepskyblue;}
+.rainbow div:nth-child(6) {--n: 6; color: mediumpurple;}

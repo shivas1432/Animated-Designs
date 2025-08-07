@@ -1,0 +1,132 @@
+:root {
+  --primary: #6C63FF;
+  --secondary: #2A2D34;
+  --success: #4CAF50;
+  --error: #FF5252;
+  --background: #F8F9FA;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--background);
+}
+
+#app {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  max-width: 500px;
+  width: 90%;
+}
+
+.choose-type {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.choose-type input[type="radio"] {
+  display: none;
+}
+
+.choose-type label {
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  background: var(--background);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.choose-type input[type="radio"]:checked + label {
+  background: var(--primary);
+  color: white;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+.expression {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.number {
+  background: var(--background);
+  padding: 1rem;
+  border-radius: 10px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.operation {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.show {
+  background: var(--primary);
+  color: white;
+}
+
+.judgment {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.right {
+  background: var(--success);
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.wrong {
+  background: var(--error);
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.result {
+  background: var(--background);
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  min-width: 60px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .choose-type {
+    flex-wrap: wrap;
+  }
+  
+  .expression {
+    font-size: 1.5rem;
+  }
+}

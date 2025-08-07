@@ -1,0 +1,59 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(dimgray, black);
+}
+
+.court {
+    width: 20em;
+    height: 20em;
+    border: 1em solid silver;
+    background-color: black;
+    border-radius: 1em;
+    position: relative;
+}
+
+.paddle {
+    width: 1em;
+    height: 9em;
+    background-color: white;
+    border-radius: 0.5em;
+    position: absolute;
+    top: 1em;
+}
+
+.paddle.left {left: 1em;}
+.paddle.right {right: 1em;}
+
+.ball {
+    width: 1em;
+    height: 1em;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    left: 2em;
+    top: 8.5em;
+}
+
+.paddle,
+.ball {
+    animation: 1s linear infinite alternate;
+}
+
+.paddle {animation-name: moving;}
+.ball {animation-name: bounce;}
+.paddle.right {animation-delay: -1s;}
+
+@keyframes moving {
+    to {
+        transform: translateY(9em);
+    }
+}
+
+@keyframes bounce {
+    to {
+        transform: translateX(15em);
+    }
+}

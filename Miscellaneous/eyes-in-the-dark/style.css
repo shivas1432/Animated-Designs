@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.container {
+    font-size: 10px;
+    width: 40em;
+    height: 10em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.eye {
+    box-sizing: border-box;
+    width: 15em;
+    border: solid white;
+    border-width: 0 5em;
+    border-radius: 50% 0;
+    animation: blink 2s linear infinite;
+}
+
+@keyframes blink {
+    40%, 60% {border-width: 0 5em;}
+    50% {border-width: 0 7.5em;}
+}
+
+.eye.left {transform: rotate(25deg);}
+.eye.right {transform: rotateY(180deg) rotate(25deg);}

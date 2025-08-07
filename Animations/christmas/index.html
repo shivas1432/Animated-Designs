@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated SVG with Image Reveal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            aspect-ratio: 1 / 1;
+            cursor: none;
+        }
+        .base-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            object-fit: cover;
+        }
+        .final-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            clip-path: circle(0px at var(--x, 0px) var(--y, 0px));
+            will-change: clip-path;
+        }
+        .container:hover .final-image {
+            clip-path: circle(10% at var(--x, 0px) var(--y, 0px));
+        }
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        @media (max-width: 768px) {
+            .container {
+                max-width: 90%;
+            }
+            .container:hover .final-image {
+                clip-path: circle(15% at var(--x, 0px) var(--y, 0px));
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+            }
+            .container:hover .final-image {
+                clip-path: circle(20% at var(--x, 0px) var(--y, 0px));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="particles-js"></div>
+        <!-- Animated using SVGANIMA - https://svganima.com -->
+        <svg width="100%" height="100%" viewBox="0 0 900 900" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule: evenodd; clip-rule: evenodd; stroke-linecap: round; stroke-linejoin: round; stroke-miterlimit: 1.5; fill: rgb(0, 0, 0); stroke: none; stroke-width: 1px; opacity: 1; filter: none;" id="svg4571" preserveAspectRatio="xMidYMid" class="base-image">
+            <defs id="defs2515"></defs>
+
+            <g id="LINES" style="fill: rgb(0, 0, 0); stroke: none; stroke-width: 1px; stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none;">
+                <g id="Sly-right" transform="matrix(0.76769,0,0,0.76769,104.039,2.48585)">
+                    <path d="M 450 0 C 698.362 0 900 201.638 900 450 C 900 510.617 887.989 568.451 866.218 621.249" style="fill: none; stroke: rgb(66, 138, 171); stroke-width: 3.91px; stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none; stroke-dasharray: 883px; stroke-dashoffset: 883px;" id="path6355">
+                        <animate attributeType="auto" attributeName="stroke-dashoffset" values="-883;-883;0;0" calcMode="spline" keyTimes="0; 0.008862530818951156; 0.026717531818484706; 1" keySplines=".5 .5 .5 1;.5 .5 .5 1;.5 .5 .5 1" dur="300.14s" begin="0s" repeatCount="1" additive="replace" accumulate="none" id="animate9687" style="stroke: rgb(66, 138, 171); stroke-width: 3.91px; stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none; fill: none;"></animate>
+                    </path>
+                </g>
+                <g id="Sly-left" transform="matrix(0.76769,0,0,0.76769,104.039,2.48585)">
+                    <path d="M 39.493 634.489 C 14.121 578.179 0 515.726 0 450 C 0 201.638 201.638 0 450 0" style="fill: none; stroke: rgb(66, 138, 171); stroke-width: 3.91px; stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none; stroke-dasharray: 897px; stroke-dashoffset: 897px;" id="path9279">
+                        <animate attributeType="auto" attributeName="stroke-dashoffset" values="897;897;0;0" calcMode="spline" keyTimes="0; 0.011994402612114347; 0.026717531818484706; 1" keySplines=".5 .5 .5 1;.5 .5 .5 1;.5 .5 .5 1" dur="300.14s" begin="0s" repeatCount="1" additive="replace" accumulate="none" id="animate5718" style="stroke: rgb(66, 138, 171); stroke-width: 3.91px; stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none; fill: none;"></animate>
+                    </path>
+                </g>
+                <g id="Trees-left" transform="matrix(0.766838,0,0,0.766838,104.806,-0.233162)">
+                    <path d="M 450.152 1173.95 C 450.152 1173.95 450.152 1193.52 450.152 1173.95 C 450.152 901.558 304.081 941.914 134.817 776.297 C 94.705 737.119 61.869 690.525 38.537 638.74 C 51.675 605.276 60.938 571.642 60.834 535.033 C 69.933 558.016 77.378 581.745 87.599 604.27 C 95.844 622.441 105.748 639.283 112.427 658.17 C 106.789 655.307 101.031 652.713 95.139 650.53 C 100.784 663.367 106.529 676.172 112.253 688.979 C 117.424 673.177 122.934 657.733 128.842 642.366 C 124.204 644.448 119.573 646.544 114.939 648.645 C 124.468 616.894 143.448 587.779 153.607 555.799 C 156.134 572.122 156.464 588.922 160.735 604.938 C 165.1 621.309 173.549 634.714 181.936 649.175 C 177.151 648.754 172.111 648.279 167.083 647.505 C 169.977 652.115 173.196 656.867 176.73 661.984 C 177.629 663.285 178.515 664.592 179.389 665.903 C 188.732 641.076 198.76 616.814 211.547 593.133 C 202.098 596.985 192.67 600.881 183.39 605.071 C 193.4 583.939 205.478 563.494 214.83 542.133 C 217.287 536.522 219.345 530.878 221.124 525.199 C 214.184 528.299 207.089 531.139 200.185 534.069 C 213.481 500.074 217.416 464.381 228.772 429.924 C 236.065 465.693 258.504 490.381 278.088 520.886 C 273.617 520.348 269.178 519.757 264.756 519.109 C 267.824 523.274 270.788 527.5 273.556 531.844" style="fill: none; stroke: rgb(59, 83, 139); stroke-width: 3.91px; stroke-linecap: round; stroke-miterlimit: 2; stroke-linejoin: round; opacity: 1; filter: none; stroke-dasharray: 1800px; stroke-dashoffset: 1800px;" id="path4604">
+                        <animate attributeType="auto" attributeName="stroke-dashoffset" values="1800;0;0" calcMode="spline" keyTimes="0; 0.026717531818484706; 1" keySplines=".5 0 .5 1;.5 0 .5 1" dur="300.14s" begin="0s" repeatCount="1" additive="replace" accumulate="none" id="animate4776" style="stroke: rgb(59, 83, 139); stroke-width: 3.91px; stroke-linejoin: round; stroke-linecap: butt; stroke-miterlimit: 2; opacity: 1; filter: none; fill: none;"></animate>
+                    </path>
+                </g>
+                <g id="Trees-right" transform="matrix(-0.766838,0,0,0.766838,795.194,-0.233162)" style="fill: rgb(0, 0, 0); stroke: none; stroke-width: 1px; stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none;">
+                    <path d="M 450.152 1173.95 C 450.152 1173.95 450.152 1193.52 450.152 1173.95 C 450.152 937.144 304.081 941.914 134.817 776.297 C 94.856 737.196 55.367 678.818 34.124 625.205 C 36.783 609.762 38.164 595.869 37.602 582.963 C 52.265 623.663 73.954 649.084 95.322 679.903 C 101.401 662.689 108.346 645.7 115.689 628.838 C 110.188 631.319 104.682 633.792 99.182 636.276 C 111.589 609.875 123.468 583.139 134.515 556.132 C 129.788 558.39 125.073 560.673 120.378 563.01 C 132.206 532.071 146.431 498.469 149.795 449.566 C 159.173 487.851 172.758 515.123 186.117 538.123" style="fill: none; stroke: rgb(38, 66, 124); stroke-width: 3.91px; stroke-linecap: round; stroke-miterlimit: 2; stroke-linejoin: round; opacity: 1; filter: none; stroke-dasharray: 1300px; stroke-dashoffset: 1300px;" id="path1294">
+                        <animate attributeType="auto" attributeName="stroke-dashoffset" values="1300;0;0" calcMode="spline" keyTimes="0; 0.01665889251682548; 1" keySplines=".5 0 .5 1;.5 0 .5 1" dur="300.14s" begin="0s" repeatCount="1" additive="replace" accumulate="none" id="animate3553" style="stroke: rgb(38, 66, 124); stroke-width: 3.91px; stroke-linejoin: round; stroke-linecap: butt; stroke-miterlimit: 2; opacity: 1; filter: none; fill: none;"></animate>
+                    </path>
+                </g>
+                <g id="Tree" transform="matrix(0.766838,0,0,0.766838,104.806,-0.233162)">
+                    <path d=" M 450.152 1173.95 C 445.479 864.731 425.111 757.707 357.935 757.707 C 344.26 757.707 340.409 742.528 343.585 722.215 C 337.532 733.713 328.873 741.373 316.869 738.418 C 307.73 736.175 307.237 726.168 310.478 714.359 C 302.454 720.413 293.303 723.861 284.138 719.881 C 275.907 716.316 275.103 705.739 277.955 693.541 C 270.255 698.584 262.736 701.151 257.642 698.61 C 248.088 693.865 251.614 682.562 256.203 674.123 C 255.891 674.123 255.567 674.136 255.269 674.123 C 228.501 672.865 233.259 640.249 233.259 640.249 C 233.259 640.249 256.656 638.914 282.945 629.309 C 284.889 628.596 286.873 627.818 288.856 627.015 C 304.347 620.675 320.295 611.346 332.624 597.652 C 329.899 599.623 326.817 601.268 323.336 602.517 C 298.966 611.241 293.081 588.737 298.59 575.464 C 287.896 577.278 265.898 578.134 258.211 556.914 C 258.211 556.914 258.88398426366047 555.8801944057213 260.4269842636605 555.1951944057213 C 260.3669703118478 554.9551806695711 260.484 555.394 260.429 555.148 C 260.428 555.149 338.085 517.626 358.781 465.5 C 357.515 464.418 356.468 463.099 355.627 461.613 C 353.579 458.022 352.75 453.446 352.931 448.883 C 350.597 449.155 347.577 449.22 344.388 448.572 C 339.514 447.574 334.225 444.877 330.375 438.59 C 328.392 435.349 326.797 431.149 325.825 425.744 C 325.825 425.744 325.877 425.704 325.993 425.652 C 328.65 424.123 361.912 404.614 379.814 377.768 C 384.136 371.29 387.557 364.389 389.438 357.208 C 359.2 363.11 357.05 335.786 356.897 331.881 C 356.897 331.88 356.896 331.88 356.896 331.879 C 356.884 331.591 356.884 331.424 356.884 331.414 C 356.883 331.413 356.883 331.412 356.883 331.412 C 373.567 327.201 394.293 298.623 404.161 264.769 C 405.357 260.667 407.232 255.63 407.21 255.659 C 398.523 267.334 381.016 263.946 380.372 244.998 C 380.372 244.997 420.195 231.232 430.823 180.032 C 431.463 176.95 432.21 169.401 432.806 166.029 C 433.338 163.054 434.44 164.181 435.58 160.809 C 437.161 156.171 438.808 151.244 439.119 146.346 L 448.953 130.381 L 458.407 143.519 C 458.523 146.617 461.505 149.489 462.426 152.586 C 463.67 156.69 467.633 158.86 468.229 162.964 C 468.281 163.3 468.921 180.483 471.215 187.586 C 480.254 215.577 501.612 234.318 519.372 246.509 C 519.157 263.96 494.732 259.756 494.732 259.756 C 495.05 262.528 495.096 264.731 494.553 267.395 C 502.241 289.728 521.331 311.118 546.8 331.414 C 546.754 331.631 546.706 331.847 546.655 332.062 C 546.558 332.475 546.452 332.885 546.336 333.291 C 546.257 333.57 546.174 333.847 546.087 334.123 C 546.055 334.223 546.023 334.323 545.99 334.423 C 545.862 334.821 545.724 335.216 545.582 335.609 C 545.565 335.658 545.548 335.706 545.53 335.755 C 545.53 335.756 545.53 335.756 545.53 335.757 C 544.746 337.854 543.728 339.876 542.487 341.748 C 542.355 341.948 542.22 342.148 542.083 342.345 C 542.082 342.346 542.08 342.346 542.079 342.347 C 536.18 350.913 525.851 356.42 513.681 353.788 C 514.041 359.296 512.896 363.87 509.625 366.788 C 512.569 371.734 516.141 377.131 520.382 382.682 C 530.96 396.487 545.698 411.252 565.207 422.361 C 567.268 423.528 569.394 424.669 571.572 425.745 C 571.572 425.745 568.397 451.113 541.447 447.95 L 541.045 447.95 C 543.081 457.167 541.927 465.1 534.953 469.637 C 532.81 471.03 530.646 471.919 528.481 472.368 C 553.378 509.348 593.236 539.622 615.568 546.538 C 616.039 546.684 616.503 546.82 616.958 546.945" style="fill: none; stroke: rgb(11, 79, 72); stroke-width: 3.91px; stroke-linecap: round; stroke-miterlimit: 2; stroke-linejoin: round; opacity: 1; filter: none; stroke-dasharray: 2152px; stroke-dashoffset: 2152px;" id="path2068">
+                        <animate attributeType="auto" attributeName="stroke-dashoffset" values="2152;0;0" calcMode="spline" keyTimes="0; 0.02672086359698807; 1" keySplines=".5 0 .5 1;.5 0 .5 1" dur="300.14s" begin="0s" repeatCount="1" additive="replace" accumulate="none" id="animate8481" style="stroke: rgb(11, 79, 72); stroke-width: 3.91px; stroke-linejoin: round; stroke-linecap: butt; stroke-miterlimit: 2; opacity: 1; filter: none; fill: none;"></animate>
+                    </path>
+                </g>
+                <path id="Star" d=" M 450 900 L 450 121.625 L 423.776 135.25 L 423.678 135.383 L 423.694 135.294 L 423.678 135.302 L 423.697 135.277 L 428.706 106.244 L 407.506 85.7 L 407.411 85.607 L 436.76 81.368 L 450.316 54.78 L 463.613 81.292 L 492.566 85.607 L 471.299 106.216 L 476.333 135.39 L 459.132 126.406" style="stroke: rgb(255, 240, 0); stroke-width: 3px; fill: rgb(0, 0, 0); stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none; stroke-dasharray: 1065px; stroke-dashoffset: 1065px;">
+                    <animate attributeType="auto" attributeName="stroke-dashoffset" values="1065;0;0" calcMode="spline" keyTimes="0;0.016725528086892785;1" keySplines=".5 0 .5 1;.5 0 .5 1" dur="300.14s" begin="0s" repeatCount="1" additive="replace" accumulate="none" id="animate9258" style="stroke: rgb(255, 240, 0); stroke-width: 3px; stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none; fill: rgb(0, 0, 0);"></animate>
+                </path>
+                <g id="Deer" transform="matrix(0.766838,0,0,0.766838,104.806,-0.233162)" style="fill: rgb(0, 0, 0); stroke: none; stroke-width: 1px; stroke-linejoin: round; stroke-linecap: round; stroke-miterlimit: 1.5; opacity: 1; filter: none;">
+                    <path d=" M 450.152 1173.95 C 450.152 1173.95 467.093 864.678 469.803 790.232 C 470.567 769.232 466.413 727.282 466.413 727.282 C 466.433 727.272 466.443 727.262 466.463 727.242 C 467.383 726.392 482.324 712.59 491.203 699.992 C 495.896 693.334 499.265 671.262 501.077 655.259 C 499.528 651.594 498.281 648.123 497.283 644.833 C 497.283 644.813 497.283 644.792 497.273 644.772 C 488.278 615.05 498.556 602.638 502.224 598.19 C 501.899 598.131 501.319 598.018 500.543 597.843 C 493.812 596.345 472.265 590.173 473.652 572.977 C 473.691 572.494 473.748 572.003 473.823 571.502 C 474.164 569.242 474.883 566.802 476.073 564.172 L 485.851 570.596 C 494.796 576.355 507.051 583.902 509.834 583.902 C 512.342 583.902 545.348 582.982 575.084 582.982 C 598.721 582.982 620.292 583.902 622.834 583.902 C 627.298 583.902 632.687 582.632 637.514 578.78 C 640.885 575.773 644.402 571.479 646.664 565.552 C 648.154 561.652 649.114 557.032 649.114 551.622 C 649.114 543.338 646.564 537.506 642.572 533.252 C 637.334 529.956 632.481 525.998 626.314 524.002 C 620.364 522.073 614.123 520.833 608.763 519.353 C 593.921 515.224 575.671 509.59 573.524 497.551 C 572.829 497.745 573.151 497.344 573.343 494.243 C 574.115 494.228 575.799 494.195 577.973 494.153 C 583.134 494.053 589.546 493.929 595.483 493.81 C 601.338 493.691 606.297 493.584 607.208 493.545 C 609.645 493.44 611.796 492.818 613.277 491.993 C 614.032 491.528 614.995 490.988 616.178 490.424 C 620.661 488.111 625.007 486.567 633.708 485.732 C 639.038 485.216 643.562 486.18 647.38 487.549 L 647.38 486.963 L 649.286 485.792 C 650.763 484.884 652.2 483.943 653.593 482.97 C 621.113 479.884 602.994 463.062 593.311 448.728 L 593.307 448.721 C 584.044 434.996 581.624 422.435 581.525 421.907 C 581.12 419.735 582.552 417.646 584.724 417.241 C 586.893 416.836 588.98 418.265 589.388 420.433 C 589.412 420.559 591.469 431.011 598.894 442.656 C 602.116 442.737 604.824 441.843 607.134 439.944 C 614.229 434.112 615.224 421.031 615.234 420.9 C 615.389 418.699 617.301 417.037 619.498 417.186 C 621.699 417.337 623.363 419.238 623.216 421.44 C 623.171 422.114 622.001 438.052 612.242 446.102 C 609.873 448.055 607.23 449.384 604.336 450.082 C 609.675 456.444 616.977 462.823 626.859 467.596 C 651.276 461.648 649.915 421.75 649.897 421.341 C 649.806 419.135 651.519 417.271 653.725 417.177 C 655.924 417.083 657.795 418.794 657.89 421 C 657.911 421.485 658.364 433.026 655.038 445.441 C 651.709 457.869 645.753 466.782 637.562 471.754 C 644.846 473.958 653.216 475.324 662.822 475.458 C 687.831 451.736 684.333 421.984 684.294 421.682 C 684.012 419.491 685.56 417.486 687.751 417.204 C 689.95 416.922 691.947 418.47 692.229 420.661 C 692.412 422.082 696.369 455.772 667.074 482.426 C 663.573 485.627 659.665 488.63 655.436 491.37 C 657.178 492.439 658.391 493.381 658.991 493.874 C 659.276 494.109 659.423 494.243 659.423 494.243 L 659.538 494.185 C 659.537 494.186 659.535 494.186 659.534 494.186 L 695.283 476.313 C 695.283 476.313 695.433 476.723 695.623 477.443 C 696.963 482.492 700.173 502.763 665.253 502.763 C 665.253 502.763 723.534 536.833 718.743 598.102 C 718.733 598.172 718.733 598.232 718.723 598.302 C 718.463 601.632 718.034 604.832 717.434 607.902 L 717.434 607.922 C 711.548 638.275 690.675 655.548 673.433 664.851 L 661.607 729.905 L 662.927 795.818 L 655.504 795.818 L 649.517 732.03 L 643.899 688.958 L 643.433 688.763 L 636.293 705.823 L 625.323 732.033 L 623.333 796.733 L 615.973 795.823 L 612.863 730.193 L 614.413 715.883 L 615.913 701.923 L 618.593 677.023 C 618.593 677.023 603.933 678.063 582.533 674.303 C 555.413 669.543 545.783 663.493 545.783 663.493 C 545.783 663.493 545.143 687.743 539.783 706.483 C 537.883 713.133 535.973 718.273 534.283 722.143 C 531.213 729.193 528.913 732.033 528.913 732.033 L 540.633 795.733 L 532.833 795.733 L 515.143 733.853 C 515.143 733.853 518.483 723.033 518.533 708.643 C 518.543 704.993 518.353 701.112 517.823 697.132 L 517.483 697.172 C 515.473 701.942 511.523 708.322 503.823 715.682 C 487.003 731.742 479.393 733.852 479.393 733.852" style="fill: none; stroke: rgb(168, 72, 72); stroke-width: 3.91px; stroke-linecap: round; stroke-miterlimit: 2; stroke-linejoin: round; opacity: 1; filter: none; stroke-dasharray: 2734px; stroke-dashoffset: 2734px;" id="path7880">
+                        <animate attributeType="auto" attributeName="stroke-dashoffset" values="2734;0;0" calcMode="spline" keyTimes="0; 0.02672086359698807; 1" keySplines=".5 0 .5 1;.5 0 .5 1" dur="300.14s" begin="0s" repeatCount="1" additive="replace" accumulate="none" id="animate6084" style="stroke: rgb(168, 72, 72); stroke-width: 3.91px; stroke-linejoin: round; stroke-linecap: butt; stroke-miterlimit: 2; opacity: 1; filter: none; fill: none;"></animate>
+                    </path>
+                </g>
+            </g>
+        </svg>
+
+        <img src="https://drive.google.com/thumbnail?id=1iPTT7R01t0nRW2wrJ-M9Bnn1p03YLsl6&sz=w1000" class="final-image">
+    </div>
+
+    <script>
+        const container = document.querySelector(".container");
+        const finalImage = document.querySelector(".final-image");
+        
+        container.addEventListener("mousemove", (event) => {
+            window.requestAnimationFrame(() => {
+                const rect = container.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+                finalImage.style.setProperty("--x", `${x}px`);
+                finalImage.style.setProperty("--y", `${y}px`);
+            });
+        });
+
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 52,
+                    density: {
+                        enable: true,
+                        value_area: 600
+                    }
+                },
+                color: {
+                    value: "#fff"
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.6,
+                    random: true,
+                    anim: {
+                        enable: false
+                    }
+                },
+                size: {
+                    value: 5,
+                    random: true,
+                    anim: {
+                        enable: false
+                    }
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "bottom",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: false
+                    },
+                    onclick: {
+                        enable: true
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+    </script>
+</body>
+</html>

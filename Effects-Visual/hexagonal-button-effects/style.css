@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(white, silver);
+}
+
+ul {
+    padding: 0;
+}
+
+ul:nth-child(1) {--rate: 1.5; --bgcolor: black;}
+ul:nth-child(2) {--rate: 1.732; --bgcolor: brown;}
+ul:nth-child(3) {--rate: 2; --bgcolor: green;}
+
+ul li {
+    --h: 3em;
+    list-style-type: none;
+    width: calc(var(--h) * var(--rate));
+    height: var(--h);
+    background-color: var(--bgcolor);
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: var(--h);
+    position: relative;
+    margin: 2em;
+}
+
+ul li::before,
+ul li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    background-color: inherit;
+    z-index: -1;
+    filter: opacity(0);
+    transition: 0.3s;
+}
+
+ul li:hover::before,
+ul li:hover::after {
+    filter: opacity(1);
+    transform: rotate(calc(60deg * var(--direction)));
+}
+
+ul li::before{--direction: 1;}
+ul li::after{--direction: -1; transition-delay: 0.1s;}

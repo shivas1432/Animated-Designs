@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, navy, black);
+}
+
+.heart {
+    font-size: 20px;
+    width: 14em;
+    height: 11em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.heart span {
+    width: 1em;
+    height: 100%;
+    top: 0;
+    background-color: mediumpurple;
+    border-radius: 0.5em;
+    position: relative;
+    animation: beating 5s infinite;
+    animation-fill-mode: backwards;
+}
+
+.heart span:nth-child(8n+1) {--height: 3em; --top: 2.2em; --color: orangered;}
+.heart span:nth-child(6n+2) {--height: 6em; --top: 0.6em; --color: gold;}
+.heart span:nth-child(4n+3) {--height: 8em; --top: 0; --color: limegreen;}
+.heart span:nth-child(2n+4):not(:nth-child(8)) {--height: 9em; --top: 0.8em; --color: dodgerblue;}
+.heart span:nth-child(5) {--height: 9.4em; --top: 1.6em; --color: mediumpurple;}
+
+@keyframes beating {
+    0%, 30%, 100% {
+        top: var(--top);
+        height: var(--height);
+        background-color: var(--color);
+        filter: blur(0);
+        width: 1em;
+    }
+
+    60%, 70% {
+        top: 25%;
+        height: 50%;
+        background-color: lightblue;
+        filter: blur(5px);
+        width: 0.1em;
+    }
+}

@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(brown, sandybrown);
+}
+
+.text {
+    font-size: 100px;
+    font-family: "arial black";
+    color: transparent;
+    position: relative;
+}
+
+.text::before,
+.text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    color: lightyellow;
+    transition: 0.2s ease-in;
+    clip-path: polygon(var(--path));
+}
+
+.text:hover::before,
+.text:hover::after {
+    transform:
+        rotate(calc(5deg * var(--direction)))
+        translateX(calc(0.15em * var(--direction)))
+        translateY(calc(0.05em * var(--direction)));
+}
+
+.text::before {--path: 0 0, 60% 0, 30% 100%, 0 100%; --direction: -1;}
+.text::after {--path: 60% 0, 100% 0, 100% 100%, 30% 100%;--direction: 1;}

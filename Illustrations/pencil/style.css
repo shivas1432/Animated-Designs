@@ -1,0 +1,91 @@
+body {
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: lightskyblue;
+	overflow: hidden;
+}
+
+figure {
+	font-size: 12px;
+	transform: translate(-75em, 45em);
+}
+
+.pencil {
+	display: flex;
+	width: 50em;
+	height: 3.5em;
+	position: absolute;
+	filter: drop-shadow(0 0 0.5em hsla(0, 0%, 0%, 0.2));
+	transform-origin: 150% center;
+	transform: rotate(calc((120 - 10 * var(--n)) * 1deg));
+	--color-h: calc(180 + 10 * var(--n));
+	--color-s: 75%;
+	--color-l: 50%;
+	--color-middle: hsl(var(--color-h), var(--color-s), var(--color-l));
+	--color-top: hsl(var(--color-h), var(--color-s), calc(var(--color-l) * 1.2));
+	--color-bottom: hsl(var(--color-h), var(--color-s), calc(var(--color-l) * 0.8));
+}
+
+.pencil .taper {
+	width: 4em;
+}
+
+.pencil .taper::before,
+.pencil .taper::after {
+	content: '';
+	position: absolute;
+	border-style: solid;
+	border-width: calc(3.5em / 2) 4em calc(3.5em / 2) 0;
+	border-color: transparent;
+}
+
+.pencil .taper::before {
+	border-right-color: burlywood;
+}
+
+.pencil .taper::after {
+	border-right-color: var(--color-middle);
+	transform-origin: left;
+	transform: scale(0.3);
+}
+
+.pencil .barrel {
+	width: 40em;
+	background-color: var(--color-middle);
+	border-top: 1em solid var(--color-top);
+	border-bottom: 1em solid var(--color-bottom);
+	color: silver;
+	line-height: 1.5em;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+.pencil .eraser {
+	position: relative;
+	width: 6em;
+	background-color: lightpink;
+	border-top: 1em solid pink;
+	border-bottom: 1em solid lightcoral;
+	border-radius: 0 0.5em 0.5em 0;
+}
+
+.pencil .eraser::before {
+	content: '';
+	position: absolute;
+	top: -1em;
+	width: 1.5em; 
+	height: 1.5em;
+	background-color: silver;
+	border-top: 1em solid lightgray;
+	border-bottom: 1em solid gray;
+}
+
+.pencil:nth-child(1) {--n: 1;}
+.pencil:nth-child(2) {--n: 2;}
+.pencil:nth-child(3) {--n: 3;}
+.pencil:nth-child(4) {--n: 4;}
+.pencil:nth-child(5) {--n: 5;}

@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.container {
+    font-size: 10px;
+    width: 40em;
+    height: 40em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sun {
+    position: absolute;
+    width: 10em;
+    height: 10em;
+    background-color: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 3em white;
+}
+
+.earth,
+.moon {
+    position: absolute;
+    width: calc(var(--diameter) * 1em);
+    height: calc(var(--diameter) * 1em);
+    border-width: 0.1em;
+    border-style: solid solid none none;
+    border-color: silver transparent transparent transparent;
+    border-radius: 50%;
+    animation: orbit linear infinite;
+    animation-duration: calc(var(--duration) * 1s);
+}
+
+@keyframes orbit {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.earth {--diameter: 30; --duration: 36.5;}
+.moon {--diameter: 8; --duration: 2.7; top: 0.3em; right: 0.3em;}
+
+.earth::before,
+.moon::before {
+    content: '';
+    position: absolute;
+    width: calc(var(--diameter) * 1em);
+    height: calc(var(--diameter) * 1em);
+    background-color: var(--color);
+    border-radius: 50%;
+    top: calc(var(--top) * 1em);
+    right: calc(var(--right) * 1em);
+}
+
+.earth::before {--diameter: 3; --color: dodgerblue; --top: 2.8; --right: 2.8;}
+.moon::before {--diameter: 1.2; --color: white; --top: 0.8; --right: 0.2;}

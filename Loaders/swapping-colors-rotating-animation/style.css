@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.container {
+    font-size: 12px;
+    width: 30em;
+    height: 30em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.container div {
+    position: absolute;
+    --diameter: calc(15% + (var(--n) - 1) * 10%);
+    width: var(--diameter);
+    height: var(--diameter);
+    color: lime; 
+    border-width: 1em;
+    border-style: solid solid none none;
+    border-color: currentColor transparent transparent transparent;
+    border-radius: 50%;
+    animation: linear infinite;
+    animation-name: rotating, change-color;
+    animation-duration: calc(5s / (9 - var(--n) + 1)), 5s;
+}
+
+@keyframes rotating {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes change-color {
+    to {
+        filter: hue-rotate(1turn);
+    }
+}
+
+.container div:nth-child(1) {--n: 1;}
+.container div:nth-child(2) {--n: 2;}
+.container div:nth-child(3) {--n: 3;}
+.container div:nth-child(4) {--n: 4;}
+.container div:nth-child(5) {--n: 5;}
+.container div:nth-child(6) {--n: 6;}
+.container div:nth-child(7) {--n: 7;}
+.container div:nth-child(8) {--n: 8;}
+.container div:nth-child(9) {--n: 9;}

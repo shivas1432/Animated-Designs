@@ -1,0 +1,71 @@
+html, body {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: black;
+}
+
+.box {
+	width: 9em;
+	height: 3em;
+	font-size: 30px;
+	color: silver;
+	font-family: sans-serif;
+	text-align: center;
+	line-height: 3em;
+	letter-spacing: 0.2em;
+	position: relative;
+	filter: blur(2px);
+	transition: 0.5s;
+}
+
+.box:hover {
+	filter: blur(0.2px);
+}
+
+.box::after {
+	content: '';
+	position: absolute;
+	width: 9em;
+	height: 9em;
+	left: 0;
+	top: -3em;
+	background-image: 
+		radial-gradient(
+			circle at center,
+			transparent 0, transparent 1.5em,
+			red 1.5em, red calc(1.5em + 1px),
+			transparent calc(1.5em + 1px)
+		),
+		linear-gradient(
+			to right,
+			red 3em,
+			transparent 3em, transparent 6em,
+			red 6em
+		),
+		linear-gradient(
+			to bottom,
+			red 3em,
+			transparent 3em, transparent 6em,
+			red 6em
+		);
+	background-repeat: no-repeat, repeat-x, repeat-y;
+	background-size: 100% 100%, 100% 1px, 1px 100%;
+	background-position: 0 0, 0 4.5em, 4.5em 0;
+	filter: opacity(0);
+}
+
+.box:hover::after {
+	animation: aim 1s linear infinite alternate;
+}
+
+@keyframes aim {
+	from {
+		filter: opacity(0.2);
+	}
+
+	to {
+		filter: opacity(0.8);
+	}
+}

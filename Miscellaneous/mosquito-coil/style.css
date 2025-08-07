@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, midnightblue, black);
+}
+
+.coil {
+    width: 17em;
+    height: 17em;
+    color: darkgreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.coil::before,
+.coil::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+}
+
+.coil::before {
+    background-color: currentColor;
+}
+
+.coil::after {
+    left: 0;
+    background-color: darkred;
+    transform: scale(0.9);
+    box-shadow: 0 0 1em white;
+    z-index: -1;
+}
+
+.coil div {
+    position: absolute;
+    width: calc((var(--n) * 2 + 1) * 1em);
+    height: calc((var(--n) + 0.5) * 1em);
+    box-sizing: border-box;
+    border: 1em solid;
+}
+
+.coil div:nth-child(odd) {
+    align-self: flex-end;
+    border-bottom: none;
+    transform: translateY(calc(17em / 2 * -1)) translateX(1em);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+.coil div:nth-child(even) {
+    align-self: flex-start;
+    border-top: none;
+    transform: translateY(calc(17em / 2));
+    border-radius: 0 0 50% 50% / 0 0 100% 100%;
+}
+
+.coil div:nth-child(1) {--n: 1;}
+.coil div:nth-child(2) {--n: 2;}
+.coil div:nth-child(3) {--n: 3;}
+.coil div:nth-child(4) {--n: 4;}
+.coil div:nth-child(5) {--n: 5;}
+.coil div:nth-child(6) {--n: 6;}
+.coil div:nth-child(7) {--n: 7;}
+.coil div:nth-child(8) {--n: 8;}

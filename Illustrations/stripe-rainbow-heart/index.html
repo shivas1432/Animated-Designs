@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, navy, black);
+        }
+
+        .love-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 2em;
+            color: transparent;
+            margin-top: 2em;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .heart:hover + .love-text {
+            opacity: 1;
+            transform: translateY(0);
+            animation: rainbow-text 2s ease-in-out infinite;
+        }
+
+        @keyframes rainbow-text {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .heart {
+            font-size: 20px;
+            width: 14em;
+            height: 11em;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .heart span {
+            width: 1em;
+            height: 100%;
+            top: 0;
+            background-color: rgba(147, 112, 219, 0.6);
+            border-radius: 0.5em;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        /* Heart shape and colors only on hover */
+        .heart:hover span:nth-child(1) { 
+            height: 3em; 
+            top: 2.2em; 
+            background-color: #ff0000;
+            animation: beating 5s infinite;
+        }
+        .heart:hover span:nth-child(2) { 
+            height: 6em; 
+            top: 0.6em; 
+            background-color: #ff8000;
+            animation: beating 5s infinite;
+        }
+        .heart:hover span:nth-child(3) { 
+            height: 8em; 
+            top: 0; 
+            background-color: #ffff00;
+            animation: beating 5s infinite;
+        }
+        .heart:hover span:nth-child(4) { 
+            height: 9em; 
+            top: 0.8em; 
+            background-color: #80ff00;
+            animation: beating 5s infinite;
+        }
+        .heart:hover span:nth-child(5) { 
+            height: 9.4em; 
+            top: 1.6em; 
+            background-color: #00ff00;
+            animation: beating 5s infinite;
+        }
+        .heart:hover span:nth-child(6) { 
+            height: 9em; 
+            top: 0.8em; 
+            background-color: #00ff80;
+            animation: beating 5s infinite;
+        }
+        .heart:hover span:nth-child(7) { 
+            height: 8em; 
+            top: 0; 
+            background-color: #00ffff;
+            animation: beating 5s infinite;
+        }
+        .heart:hover span:nth-child(8) { 
+            height: 6em; 
+            top: 0.6em; 
+            background-color: #0080ff;
+            animation: beating 5s infinite;
+        }
+        .heart:hover span:nth-child(9) { 
+            height: 3em; 
+            top: 2.2em; 
+            background-color: #8000ff;
+            animation: beating 5s infinite;
+        }
+
+        @keyframes beating {
+            0%, 30%, 100% {
+                filter: blur(0);
+                width: 1em;
+            }
+            
+            60%, 70% {
+                filter: blur(5px);
+                width: 0.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="love-text">I Love You</div>
+</body>
+</html>

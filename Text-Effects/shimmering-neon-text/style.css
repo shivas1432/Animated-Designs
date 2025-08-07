@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.neon {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+}
+
+.text {
+    color: white;
+    font-size: 150px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    margin: 0;
+    filter: brightness(2);
+    background-color: black;
+}
+
+.text::before {
+    content: attr(data-text);
+    position: absolute;
+    filter: blur(3px);
+    mix-blend-mode: difference;
+}
+
+.gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, red, gold, lightgreen, gold, red);
+    mix-blend-mode: multiply;
+}
+
+.spotlight {
+    position: absolute;
+    top: -200%;
+    left: -100%;
+    right: -100%;
+    bottom: -200%;
+    background: radial-gradient(circle, white, black 25%)
+        center / 5% 5%;
+    transform: rotate(45deg);
+    mix-blend-mode: color-dodge;
+    animation: light 10s linear infinite;
+}
+
+@keyframes light {
+    to {
+        transform: translate(25%, 25%);
+    }
+}

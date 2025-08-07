@@ -1,0 +1,61 @@
+body {
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: radial-gradient(circle at center,lightgreen, white);
+}
+
+.vue {
+	width: 25em;
+	height: 20em;
+	position: relative;
+	overflow: hidden;
+}
+
+/* brand colors from https://brandcolors.net/b/vue-js */
+.vue .outer,
+.vue .middle,
+.vue .inner {
+	position: absolute;
+	border-style: solid;
+	border-color: currentColor transparent transparent transparent;
+	border-width: 20em 12.5em 0 12.5em;
+	animation: in-and-out 3s linear infinite;
+}
+
+.vue .outer {
+	color: #42b883; /* aragon green */
+}
+
+.vue .middle {
+	color: #35495e; /* derk denim */
+	transform-origin: top;
+	transform: scale(0.65);
+	animation-delay: 0.1s;
+}
+
+.vue .inner {
+	color: white;
+	transform-origin: top;
+	transform: scale(calc(0.65 * 0.5));
+	animation-delay: 0.2s;
+}
+
+@keyframes in-and-out {
+	0%, 35%, 65%, 100% {
+		top: 0;
+		filter: opacity(1);
+	}
+
+    45% {
+        top: 100%;
+        filter: opacity(0);
+    }
+
+    55% {
+    	top: -100%;
+    	filter: opacity(0);
+    }
+}

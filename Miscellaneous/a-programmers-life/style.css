@@ -1,0 +1,51 @@
+body {
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.code {
+	background-color: silver;
+	padding: 1em 0;
+	font-size: 24px;
+	font-family: monospace;
+	border-radius: 0.5em;
+	position: relative;
+}
+
+.code p {
+	white-space: pre;
+	padding: 0 1em;
+	margin: 0.5em;
+	line-height: 1.2em;
+}
+
+.code::before,
+.code::after {
+	content: '';
+	position: absolute;
+	width: 94%;
+	height: 1.2em;
+	left: 3%;
+	top: calc(1em + 0.5em + (1.2em + 0.5em) * var(--n));
+	background-color: yellow;
+	mix-blend-mode: exclusion;
+	animation: 2s steps(4) infinite;
+}
+
+.code::before {--n: 1; animation-name: move;}
+.code::after {--n: 0; animation-name: show;}
+
+@keyframes move {
+	0%, 25% {--n: 1;}
+	26%, 50% {--n: 2;}
+	51%, 75% {--n: 3;}
+	76%, 100% {--n: 4;}
+}
+
+@keyframes show {
+	0%, 70% {visibility: hidden;}
+	71%, 100% {visibility: show;}
+}

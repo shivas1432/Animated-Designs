@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+}
+
+.word {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+}
+
+.word div {
+    width: 100%;
+    background-image: linear-gradient(
+        var(--direction),
+        hsla(180, 5%, 55%, 0.2) 0%, 
+        hsla(180, 5%, 55%, 0) 33%, 
+        hsla(180, 5%, 55%, 0.7) 66%, 
+        hsla(180, 5%, 55%, 0.2) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: darkslategray;
+    font-size: 12vmin;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px hsla(100, 100%, 100%, 0.8);
+    position: relative;
+}
+
+.word div:nth-child(odd) {--direction: to bottom;}
+.word div:nth-child(even) {--direction: to top;}
+
+.word div:not(:first-child)::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 90%;
+    background-color: black;
+    left: -5px;
+    border-left: 1px solid white;
+    border-radius: 50%;
+}
+
+.word div:not(:first-child):nth-child(odd)::before {top: 2%;}
+.word div:not(:first-child):nth-child(even)::before {bottom: 2%;}

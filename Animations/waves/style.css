@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcyan;
+}
+
+.sea {
+    font-size: 10px;
+    width: 30em;
+    height: 30em;
+    background-color: whitesmoke;
+    border-radius: 0.5em;
+    box-shadow: 0 0.2em 3em rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(
+        darkblue,
+        rgba(255, 255, 255, 0) 80%,
+        rgba(255, 255, 255, 0.5));
+    position: relative;
+    overflow: hidden;
+}
+
+.sea .wave {
+    position: absolute;
+    width: 50em;
+    height: 50em;
+    background-color: var(--color);
+    border-radius: 43%;
+    bottom: 5em;
+    left: calc((30em - 50em) / 2);
+    filter: opacity(var(--opacity));
+    animation: drift linear infinite;
+    animation-duration: calc(var(--duration) * 1s);
+}
+
+.sea .wave:nth-child(1) {--duration: 5; --color: deepskyblue; --opacity: 0.4;}
+.sea .wave:nth-child(2) {--duration: 7; --color: deepskyblue; --opacity: 0.4;}
+.sea .wave:nth-child(3) {--duration: 9; --color: orangered; --opacity: 0.1;}
+
+@keyframes drift {
+    to {
+        transform: rotate(-1turn);
+    }
+}
+
+.sea .title {
+    z-index: 1;
+    color: white;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    text-align: center;
+    position: relative;
+    top: 5em;
+}

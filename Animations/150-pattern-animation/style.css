@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222;
+}
+
+.container {
+    font-size: 8px;
+    display: grid;
+    --columns: 6;
+    grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.square {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.2em;
+    padding: 0.1em;
+}
+
+.square span {
+    display: block;
+    border: 2.5em solid;
+    color: #ddd;
+    border-radius: 50%;
+    transform: rotate(calc(45deg + 90deg * 0));
+    animation: rotation 2s cubic-bezier(0.2, 0.8, 0.8, 0.2) infinite;
+}
+
+@keyframes rotation {
+    25% { transform: rotate(calc(45deg + 90deg * 1)); }
+    50% { transform: rotate(calc(45deg + 90deg * 2)); }
+    75% { transform: rotate(calc(45deg + 90deg * 3)); }
+    100% { transform: rotate(calc(45deg + 90deg * 4)); }
+}
+
+.square span:nth-child(1),
+.square span:nth-child(4) {
+    border-color: transparent currentColor currentColor transparent;
+}
+
+.square span:nth-child(2),
+.square span:nth-child(3) {
+    border-color: transparent currentColor currentColor transparent;
+    animation-direction: reverse;
+}

@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(black, gray, silver, gray, black);
+}
+
+.macbook {
+    font-size: 10px;
+    width: 50em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screen {
+    width: 40em;
+    height: calc(40em * 0.667);
+    box-sizing: border-box;
+    border: black solid;
+    border-width: 1.8em 1.3em 1.7em 1.3em;
+    border-radius: 3% 3% 0 0 / 5%;
+    box-shadow: 0 0 0 0.1em silver;
+    background: radial-gradient(
+        circle at right bottom,
+        rgba(255, 255, 255, 0.4) 33em,
+        rgba(255, 255, 255, 0.6) 33em
+    ), black;
+}
+
+.base {
+    width: inherit;
+    height: 1.75em;
+    border-radius: 0 0 10% 10% / 0 0 50% 50%;
+    --top: linear-gradient(
+        to right,
+        hsla(0, 0%, 0%, 0.5) 0%,
+        hsla(100, 100%, 100%, 0.8) 1%,
+        hsla(0, 0%, 0%, 0.4) 4%,
+        transparent 15%,
+        hsla(100, 100%, 100%, 0.8) 50%,
+        transparent 85%,
+        hsla(0, 0%, 0%, 0.4) 96%,
+        hsla(100, 100%, 100%, 0.8) 99%,
+        hsla(0, 0%, 0%, 0.5) 100%
+    ) no-repeat top / 100% 55%;
+    --bottom: linear-gradient(
+        white 55%,
+        #999 60%,
+        #222 90%,
+        hsla(0, 0%, 0%, 0.1) 100%
+    );
+    background: var(--top), var(--bottom);
+}
+
+.base::before {
+    content: '';
+    position: absolute;
+    width: 7em;
+    height: 0.7em;
+    border-radius: 0 0 7% 7% / 0 0 95% 95%;
+    left: calc(50% - 7em / 2);
+    box-shadow: 
+        inset -0.5em -0.1em 0.3em rgba(0, 0, 0, 0.2),
+        inset 0.5em 0.1em 0.3em rgba(0, 0, 0, 0.2);
+    background-color: #ddd;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2f312e;
+        }
+
+        .man {
+            font-size: 10px;
+            width: 12em;
+            height: 33em;
+            position: relative;
+            color: rgb(252, 248, 13);
+        }
+
+        .man::before {
+            content: '';
+            position: absolute;
+            width: 12em;
+            height: 0.8em;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            bottom: -0.2em;
+            left: -3em;
+            animation: shadow-animate 2s ease-in-out infinite;
+        }
+
+        @keyframes shadow-animate {
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .head {
+            position: absolute;
+            width: 7em;
+            height: 7em;
+            background-color: currentColor;
+            border-radius: 50%;
+            right: 0;
+        }
+
+        /* Eye for side view */
+        .head::before {
+            content: '';
+            position: absolute;
+            width: 0.8em;
+            height: 0.8em;
+            background-color: #2f312e;
+            border-radius: 50%;
+            top: 2.5em;
+            right: 2em;
+            animation: eye-blink 3s ease-in-out infinite;
+        }
+
+        @keyframes eye-blink {
+            0%, 90%, 100% {
+                transform: scaleY(1);
+            }
+            95% {
+                transform: scaleY(0.1);
+            }
+        }
+
+        .body {
+            position: absolute;
+            width: 6.2em;
+            height: 14.4em;
+            background-color: currentColor;
+            border-radius: 100% 20% 0 0;
+            top: 7em;
+        }
+
+        .head, .body {
+            animation: body-animation 4s ease-in-out infinite;
+        }
+
+        @keyframes body-animation {
+            0%, 100% {
+                transform: translateY(0) skewX(-2deg);
+            }
+            25%, 75% {
+                transform: translateY(0.5em) skewX(0deg);
+            }
+            50% {
+                transform: translateY(0) skewX(0deg);
+            }
+        }
+
+        .feet::before, .feet::after {
+            content: '';
+            position: absolute;
+            width: 4em;
+            height: 1.4em;
+            background-color: currentColor;
+            border-radius: 1em 80% 0.4em 0.4em;
+            bottom: 0;
+            left: -1.6em;
+            animation: feet-animation 3s linear infinite;
+        }
+
+        .feet::after {
+            animation-delay: 1.5s;
+        }
+
+        @keyframes feet-animation {
+            20% {transform: translateX(3.4em) translateY(-1.6em) rotate(-4deg);}
+            30% {transform: translateX(4.6em) translateY(-1em) rotate(0deg);}
+            40% {transform: translateX(5.6em) translateY(-0.3em) rotate(4deg);}
+            45% {transform: translateX(5.6em) translateY(0) rotate(0deg);}
+        }
+    </style>
+</head>
+<body>
+    <figure class="man">
+        <div class="head"></div>
+        <div class="body"></div>
+        <div class="feet"></div>
+    </figure>
+</body>
+</html>

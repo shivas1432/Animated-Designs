@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.container {
+    --dark: #222;
+    --light: #ddd;
+    font-size: 40px;
+    width: calc(10em + 0.5em);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.track {
+    width: inherit;
+    height: 2em;
+    border: 1px solid var(--dark);
+    background: linear-gradient(
+        to right,
+        var(--dark) 50%,
+        var(--light) 50%
+    );
+    background-size: 1em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 1em 0;
+}
+
+.track::before {
+    content: '';
+    position: absolute;
+    width: 2em;
+    height: 0.8em;
+    background-color: var(--color);
+    box-sizing: border-box;
+    border: 0.1em solid var(--border-color);
+    animation: move 5s linear infinite alternate;
+}
+
+.track:first-child::before {--color: var(--light); --border-color: transparent;}
+.track:last-child::before {--color: white; --border-color: var(--dark);}
+
+@keyframes move {
+    from {left: 0;}
+    to {left: calc(100% - 2em);}
+}

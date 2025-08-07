@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.21/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="choose-type">
+            <input type="radio" id="addition" name="arithmetic-type" :value="ARITHMETIC_TYPE.ADDITION" v-model="arithmeticType">
+            <label for="addition">addition</label>
+            <input type="radio" id="subtraction" name="arithmetic-type" :value="ARITHMETIC_TYPE.SUBTRACTION" v-model="arithmeticType">
+            <label for="subtraction">subtraction</label>
+            <input type="radio" id="multiplication" name="arithmetic-type" :value="ARITHMETIC_TYPE.MULTIPLICATION" v-model="arithmeticType">
+            <label for="multiplication">multiplication</label>
+            <input type="radio" id="division" name="arithmetic-type" :value="ARITHMETIC_TYPE.DIVISION" v-model="arithmeticType">
+            <label for="division">division</label>
+        </div>
+        <div class="score">
+            <span>ROUND {{round.all - 1}}</span>
+            <span>SCORE {{score}}%</span>
+        </div>
+        <div class="expression">
+            <span class="number">{{numbers[0]}}</span>
+            <span class="operation">{{operation}}</span>
+            <span class="number">{{numbers[1]}}</span>
+            <span class="operation">=</span>
+            <span class="button show" v-show="isThinking" @click="getResult">?</span>
+            <span class="result" v-show="!isThinking">{{result}}</span>
+        </div>
+        <div class="judgment" :style="{visibility: isThinking ? 'hidden' : 'visible'}">
+            <span class="button right" @click="answerRight">✔</span>
+            <span class="button wrong" @click="answerWrong">✘</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

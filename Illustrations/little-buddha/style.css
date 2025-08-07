@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(white, bisque);
+}
+
+.buddha {
+    font-size: 10px;
+    width: 13em;
+    height: 19em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    animation: animate 3s ease-in-out infinite;
+}
+
+@keyframes animate {
+    50% {
+        transform: translateY(-2em);
+    }
+}
+
+/* shadow */
+.buddha::before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    height: 0.9em;
+    bottom: -2em;
+    animation: shadow-animate 3s ease-in-out infinite;
+}
+
+@keyframes shadow-animate {
+    50% {
+        transform: scale(0.8) translateY(2em);
+    }
+}
+
+.buddha > * {
+    position: absolute;
+}
+
+.head {
+    width: 12.5em;
+    height: 12.5em;
+    color: peachpuff;
+    background: 
+        radial-gradient(
+            circle at 50% 40%,
+            tomato 0.6em,
+            transparent 0.6em
+        ), /* circle between eyebrows */
+        currentColor;
+    border-radius: 50%;
+    filter: brightness(0.9);
+    box-shadow: 
+        5.8em 2em 0 -4.8em, /* ear right*/
+        -5.8em 2em 0 -4.8em; /* ear left*/
+}
+
+.eyes::before,
+.eyes::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 0.5em;
+    border: 0.6em #333;
+    border-style: solid solid none solid;
+    border-radius: 1em 1em 0 0;
+    top: 6em;
+}
+
+.eyes::before {left: 2.5em;}
+.eyes::after {right: 2.5em;}
+
+.mouth {
+    width: 1.5em;
+    height: 0.5em;
+    border: 0.5em tomato;
+    border-style: none solid solid solid;
+    border-radius: 0 0 1.5em 1.5em;
+    top: 9em;
+}
+
+.body {
+    width: 10em;
+    height: 8em;
+    background-color: coral;
+    border-radius: 4em;
+    bottom: 1em;
+    z-index: -1;
+}
+
+.hand {
+    width: 3.5em;
+    height: 3.5em;
+    background-color: peachpuff;
+    border-radius: 50%;
+    top: 13em;
+    filter: brightness(0.9);
+}
+
+.legs {
+    width: inherit;
+    height: 5em;
+    background-color: coral;
+    border-radius: 2.5em;
+    bottom: 0;
+    z-index: -1;
+}

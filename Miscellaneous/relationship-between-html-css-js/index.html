@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Body Scanner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .person {
+            width: 400px;
+            height: 537px;
+            background-image: url(css.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            cursor: move;
+            filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.3));
+            transition: filter 0.3s ease;
+        }
+
+        .person:hover {
+            filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.5));
+        }
+
+        .person .inside {
+            width: 100%;
+            height: 100px;
+            background-image: url(html.png);
+            background-position: center;
+            box-sizing: border-box;
+            border: 5px solid gray;
+            border-radius: 0.3em;
+            position: absolute;
+            top: 25%;
+            background-attachment: fixed;
+            pointer-events: none;
+        }
+
+        .selector {
+            position: absolute;
+            width: 220px;
+            top: calc(50% - 120px);
+            left: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .selector-title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .option-item:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: rgba(0, 255, 255, 0.3);
+            transform: translateX(5px);
+        }
+
+        .selector input[type="radio"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .selector input[type="radio"]:checked {
+            background: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+            animation: radioGlow 1s ease-in-out infinite;
+        }
+
+        @keyframes radioGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.7); }
+            50% { box-shadow: 0 0 25px rgba(0, 255, 255, 1); }
+        }
+
+        .selector input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .selector label {
+            font-size: 16px;
+            font-family: monospace;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .selector input[type="radio"]:checked + label {
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .status-bar {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .status-text {
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .scan-instructions {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 16px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="status-bar">
+        <div class="status-dot"></div>
+        <div class="status-text">Scanner Active</div>
+    </div>
+
+    <div class="person">
+        <div class="inside"></div>
+    </div>
+
+    <div class="selector">
+        <div class="selector-title">Scan Mode</div>
+        <div class="option-group">
+            <div class="option-item">
+                <input type="radio" name="options" value="html" id="html" checked>
+                <label for="html">HTML</label>
+            </div>
+            <div class="option-item">
+                <input type="radio" name="options" value="js" id="js">
+                <label for="js">JavaScript</label>
+            </div>
+            <div class="option-item">
+                <input type="radio" name="options" value="css" id="css">
+                <label for="css">CSS</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="scan-instructions">
+        Move cursor over the body to scan different areas
+    </div>
+
+    <script>
+        window.onload = init;
+
+        function init() {
+            var person = document.querySelector('.person');
+            var inside = document.querySelector('.person .inside');
+            var options = document.getElementsByName('options');
+            const WINDOW_HEIGHT = 100;
+            const OFFSET = WINDOW_HEIGHT / 2;
+            const PERSON_HEIGHT = Number.parseInt(window.getComputedStyle(person).height);
+
+            person.addEventListener('mousemove', e => {
+                // Get the selected option
+                const selectedOption = document.querySelector('input[name="options"]:checked').value;
+                
+                // Only show scanning effect if CSS is not selected
+                if (selectedOption === 'css') {
+                    inside.style.display = 'none';
+                    return;
+                }
+                
+                inside.style.display = 'block';
+                if(e.offsetY < OFFSET || e.offsetY > PERSON_HEIGHT - OFFSET) return;
+                inside.style.top = e.offsetY - OFFSET + 'px';
+            });
+
+            options.forEach((option) => {
+                option.addEventListener('click', e => {
+                    if (option.value === 'css') {
+                        // Hide scanning window for CSS option
+                        inside.style.display = 'none';
+                    } else {
+                        // Show scanning window and set background image for other options
+                        inside.style.display = 'block';
+                        inside.style.backgroundImage = `url(${option.value}.png)`;
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

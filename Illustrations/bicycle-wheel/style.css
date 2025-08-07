@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(#555, #222);
+}
+
+.container {
+    width: 15em;
+    height: 11.5em;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wheel {
+    width: 9em;
+    height: 9em;
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 0.4em #777,
+        0 0 0 0.9em #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: wheel-run 4s linear infinite;
+}
+
+@keyframes wheel-run {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.wheel span {
+    position: absolute;
+    width: 8em;
+    height: 1em;
+    border: 0.1em #ccc;
+    border-style: solid none;
+    transform: rotate(calc((var(--n) - 1) * 30deg));
+}
+
+.road {
+    width: inherit;
+    height: 0.2em;
+    background: linear-gradient(
+            to right,
+            silver 0, silver 4em,
+            transparent 4em, transparent 5em,
+            silver 5em, silver 10em,
+            transparent 10em, transparent 12em,
+            silver 12em, silver 14em,
+            transparent 14em, transparent 15em
+        ) 15em;
+    transform: translateY(-1.3em);
+    animation: road-run 6s linear infinite;
+}
+
+@keyframes road-run {
+    to {
+        background-position: -15em;
+    }
+}
+
+.wheel span:nth-child(1) { --n: 1 }
+.wheel span:nth-child(2) { --n: 2 }
+.wheel span:nth-child(3) { --n: 3 }
+.wheel span:nth-child(4) { --n: 4 }
+.wheel span:nth-child(5) { --n: 5 }
+.wheel span:nth-child(6) { --n: 6 }
